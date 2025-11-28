@@ -14,6 +14,14 @@
             --font-family: 'Arial', sans-serif; 
         }
 
+        /* KARANLIK MOD Değişkenleri */
+        body.dark-mode {
+            --text-color: #f0f0f0; /* Açık Gri metin */
+            --background-light: #121212; /* Çok Koyu Arka Plan */
+            --background-grey: #1e1e1e; /* Koyu Gri Arka Plan */
+        }
+        
+        /* Genel Stiller */
         body {
             font-family: var(--font-family);
             margin: 0;
@@ -22,6 +30,7 @@
             color: var(--text-color);
             line-height: 1.7;
             text-rendering: optimizeLegibility;
+            transition: background-color 0.3s, color 0.3s; /* Renk geçişi yumuşak olsun */
         }
 
         /* Ana Bölüm Düzeni */
@@ -31,6 +40,26 @@
             margin: 0 auto;
             padding: 30px 0;
         }
+        
+        /* KARANLIK MOD DÜĞMESİ Stili */
+        #mode-toggle {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: var(--background-light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        #mode-toggle:hover {
+            background-color: #e55a00;
+        }
+
 
         /* Header - Minimal ve Slogan Odaklı */
         header {
@@ -64,6 +93,10 @@
             border-top: 1px solid #eee;
             padding-top: 15px;
         }
+        
+        body.dark-mode nav {
+            border-top: 1px solid #333;
+        }
 
         nav a {
             color: var(--text-color);
@@ -88,40 +121,6 @@
             font-weight: 700;
         }
         
-        /* CTA Bölümü Stili */
-        #cta {
-            background-color: var(--primary-color);
-            color: var(--background-light);
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin: 30px auto;
-        }
-        
-        #cta h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.8em;
-            font-weight: 800;
-        }
-        
-        #cta a {
-            display: inline-block;
-            background-color: var(--background-light);
-            color: var(--primary-color);
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 20px;
-            font-weight: 700;
-            font-size: 1.1em;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        
-        #cta a:hover {
-            background-color: #fff0e0;
-            transform: scale(1.05);
-        }
-
         /* Uygulama Kartları - Hover Etkisi Korundu */
         .app-grid {
             display: grid;
@@ -140,6 +139,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #eee;
         }
+        
+        body.dark-mode .app-card {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+            border: 1px solid #333;
+        }
 
         .app-card:hover {
             transform: translateY(-5px); 
@@ -154,7 +158,8 @@
         }
         
         .app-card p {
-            color: #666;
+            color: var(--text-color); /* Karanlık modda da okunur olsun */
+            opacity: 0.8;
         }
 
         .app-card a {
@@ -208,13 +213,19 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary-color); /* Turuncu vurgu */
+            border-left: 5px solid var(--primary-color); 
             text-align: left;
+        }
+        
+        body.dark-mode .testimonial-card {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+            border-left: 5px solid var(--primary-color);
         }
 
         .testimonial-card p {
             font-style: italic;
             color: var(--text-color);
+            opacity: 0.9;
             margin-bottom: 15px;
         }
 
@@ -225,6 +236,40 @@
             margin-top: 10px;
         }
         
+        /* SSS Bölümü Stili - YENİ CSS */
+        #sss {
+            padding: 50px 0;
+            background-color: var(--background-grey);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .sss-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .sss-item {
+            border-bottom: 1px solid #333;
+        }
+
+        .sss-item h4 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .sss-item p {
+            margin-top: 5px;
+            font-size: 1em;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -244,6 +289,7 @@
 <body>
 
     <header>
+        <button id="mode-toggle">Karanlık Modu Aç</button>
         <div class="container">
             <h1>MERKEZ</h1>
             <div class="slogan-box">
@@ -253,19 +299,13 @@
                 <a href="#hakkinda">Hakkımızda</a>
                 <a href="#uygulamalar">Projeler</a>
                 <a href="#yorumlar">Yorumlar</a>
-                <a href="#iletisim">İletişim</a>
+                <a href="#sss">SSS</a> <a href="#iletisim">İletişim</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
         
-        <section id="cta">
-            <h3>Hayatınızı Kolaylaştıracak Uygulamalar Merkezde!</h3>
-            <p>Hemen keşfetmeye başla ve binlerce kullanıcımız arasına katıl.</p>
-            <a href="#uygulamalar">Tüm Projeleri Keşfet</a>
-        </section>
-
         <section id="hakkinda">
             <h2>MERKEZ HAKKINDA</h2>
             <p>MERKEZ, senin de çok sevdiğin gibi **teknoloji ve bilişime** odaklanmış bir şirkettir. Amacımız, en sade ve kullanıcı dostu uygulamaları ve eğlenceli oyunları tek bir çatı altında toplamaktır.</p>
@@ -318,12 +358,36 @@
 
             </div>
         </section>
+        
+        <section id="sss">
+            <h2>SIKÇA SORULAN SORULAR</h2>
+            <div class="sss-item">
+                <h4>MERKEZ hangi alanlarda uygulama geliştiriyor?</h4>
+                <p>Odak noktamız eğlence (oyunlar), bilgi paylaşımı (Gezi Merkezi) ve sosyal etkileşim (Merkez Sosyal) alanlarıdır. Mobil öncelikli çözümler üretiyoruz.</p>
+            </div>
+            
+            <div class="sss-item">
+                <h4>Uygulamaları hangi platformlarda bulabilirim?</h4>
+                <p>MERKEZ SOSYAL'i direkt olarak .apk linki üzerinden indirebilirsiniz. Nostalji Merkezi ve Gezi Merkezi ise web tabanlı platformlardır.</p>
+            </div>
+            
+            <div class="sss-item">
+                <h4>Yeni proje veya işbirliği teklifleri için nasıl iletişime geçebilirim?</h4>
+                <p>İletişim bölümünde yer alan "info@merkez.com" e-posta adresi üzerinden bize ulaşabilirsiniz. En kısa sürede size dönüş yapılacaktır.</p>
+            </div>
+            
+            <div class="sss-item" style="border-bottom: none;">
+                <h4>MERKEZ'in ana teknolojileri nelerdir?</h4>
+                <p>Projelerimizde modern web standartlarını (HTML5, CSS3/SASS, JavaScript) ve hafif, yüksek performanslı mobil çözümleri esas alıyoruz.</p>
+            </div>
+        </section>
+
 
         <section id="iletisim">
             <h2>BİZE ULAŞIN</h2>
             <p style="font-size: 1.1em;">Tüm soru, öneri ve iş birlikleriniz için:</p>
             <p style="font-weight: bold; font-size: 1.4em; color: var(--primary-color); margin-top: 10px;">info@merkez.com</p>
-            <p style="color: #777; margin-top: 20px;">Adres: Manisa / Akhisar</p>
+            <p style="color: var(--text-color); opacity: 0.7; margin-top: 20px;">Adres: Manisa / Akhisar</p>
         </section>
 
     </div>
@@ -331,6 +395,34 @@
     <footer>
         &copy; 2025 MERKEZ | <a href="https://github.com" target="_blank">Her Şeyin Merkezi Burası.</a>
     </footer>
+    
+    <script>
+        const toggleButton = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        // Sayfa yüklendiğinde hafızadaki ayarı kontrol et
+        const savedMode = localStorage.getItem('mode') || 'light';
+        if (savedMode === 'dark') {
+            body.classList.add('dark-mode');
+            toggleButton.textContent = 'Karanlık Modu Kapat';
+        } else {
+            toggleButton.textContent = 'Karanlık Modu Aç';
+        }
+
+        // Düğmeye tıklama işlevi
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Mod durumunu sakla
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('mode', 'dark');
+                toggleButton.textContent = 'Karanlık Modu Kapat';
+            } else {
+                localStorage.setItem('mode', 'light');
+                toggleButton.textContent = 'Karanlık Modu Aç';
+            }
+        });
+    </script>
 
 </body>
 </html>
