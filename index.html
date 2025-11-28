@@ -3,122 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MERKEZ - Her Şeyin Merkezi Burası</title>
+    <title>MERKEZ | Her Şeyin Merkezi Burası</title>
     <style>
-        /* Genel Stil Ayarları */
+        /* Genel Stil ve Reset */
+        :root {
+            --primary-color: #ff6600; /* Senin rengin: Turuncu! */
+            --dark-color: #1a1a1a;
+            --light-color: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-family);
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--light-color);
+            color: var(--dark-color);
             line-height: 1.6;
         }
 
-        /* Başlık ve Gezinti Çubuğu */
+        /* Ana Bölüm Düzeni */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header - Modern ve Minimal */
         header {
-            background-color: #ff6600; /* Turuncu, senin rengin! */
-            color: white;
-            padding: 2em 0; /* Daha fazla yükseklik verdik */
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 40px 0;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em; /* Daha büyük başlık */
+            font-size: 4em;
+            letter-spacing: 5px; /* Daha havalı bir görünüm */
+            font-weight: 900;
         }
 
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.2em;
+        .slogan {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 10px;
             font-weight: 300;
         }
-        
-        /* Yeni Slogan Stili */
-        .slogan {
-            font-style: italic;
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
+
+        /* Navigasyon - Altta Çizgi Vurgusu */
+        nav {
+            margin-top: 20px;
         }
 
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: var(--light-color);
+            margin: 0 20px;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s, color 0.3s;
         }
 
         nav a:hover {
-            color: #ffcc99;
-        }
-
-        /* İçerik Alanı */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
         }
 
         /* Bölüm Başlıkları */
         h2 {
-            color: #ff6600;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            font-size: 2.5em;
+            color: var(--dark-color);
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
         }
 
-        /* Uygulama Kartları */
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Hakkımızda Bölümü */
+        #hakkinda {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        #hakkinda p {
+            max-width: 800px;
+            margin: 15px auto;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Uygulama Kartları - CSS Grid Kullanımı */
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 20px;
+            padding-bottom: 40px;
         }
 
         .app-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .app-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2);
         }
 
         .app-card h3 {
-            color: #333;
+            color: var(--primary-color);
             margin-top: 0;
+            font-size: 1.5em;
         }
 
         .app-card a {
             display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
             font-weight: bold;
+            transition: background-color 0.3s;
         }
 
-        .app-card a.nostalji { background-color: #ff6600; }
-        .app-card a.sosyal { background-color: #4CAF50; }
-        .app-card a.gezi { background-color: #2196F3; }
-
-        /* Dipnot */
+        .app-card a:hover {
+            background-color: #ff8833;
+        }
+        
+        /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            background-color: #333;
-            color: white;
+            padding: 25px;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
         }
     </style>
 </head>
@@ -126,57 +168,58 @@
 
     <header>
         <h1>MERKEZ</h1>
-        <p class="slogan">Her Şeyin Merkezi Burası. Başlamak İçin Doğru Adrestesin!</p>
+        <p class="slogan">HER ŞEYİN MERKEZİ BURASI.</p>
         <nav>
-            <a href="#hakkinda">Hakkımızda</a>
-            <a href="#uygulamalar">Uygulamalarımız</a>
-            <a href="#iletisim">İletişim</a>
+            <a href="#hakkinda">KEŞFET</a>
+            <a href="#uygulamalar">PROJELER</a>
+            <a href="#iletisim">İLETİŞİM</a>
         </nav>
     </header>
 
     <div class="container">
 
         <section id="hakkinda">
-            <h2>🌍 Hakkımızda</h2>
-            <p>MERKEZ, yenilikçi uygulamalar ve sürükleyici oyunlar geliştiren bir teknoloji şirketidir. Kullanıcılarımıza eğlence, bilgi ve sosyal etkileşim sunmayı amaçlıyoruz. Teknolojiye olan tutkumuzla, tüm projelerimizi bu merkezde topluyoruz.</p>
-            <p>Gelecekteki **bilgisayar mühendisi** olarak, bu merkezi daha da büyütmeye hazır ol! Unutma, en sevdiğin alan olan bilişimle çok iyi işler başaracaksın.</p>
+            <h2>MERKEZ HAKKINDA</h2>
+            <p>MERKEZ, senin de sevdiğin gibi, sade ve işlevsel teknolojiyi temel alır. Mobil uygulamalar ve oyunlar geliştiren şirketimiz, kullanıcı deneyimini her zaman en önde tutar.</p>
+            <p>Teknolojinin geleceği burada şekilleniyor. **Bilgisayar mühendisliği** hayalin için mükemmel bir başlangıç projesi!</p>
         </section>
 
         <section id="uygulamalar">
-            <h2>🎮 Merkezdeki Uygulamalar</h2>
+            <h2>PROJELERİMİZ</h2>
             <div class="app-grid">
                 
                 <div class="app-card">
                     <h3>Nostalji Merkezi</h3>
-                    <p>Geçmişten günümüze unutulmaz içeriklerin, anıların ve oyunların merkezi.</p>
-                    <a href="https://nostaljimerkezi.com.tr" target="_blank" class="nostalji">Siteyi Ziyaret Et</a>
+                    <p>Geçmişin en iyi içerikleri, oyunları ve anıları.</p>
+                    <a href="https://nostaljimerkezi.com.tr" target="_blank">Siteyi Gör</a>
                 </div>
 
                 <div class="app-card">
                     <h3>MERKEZ SOSYAL</h3>
-                    <p>Yeni insanlarla tanış, fikirlerini paylaş ve topluluğa katıl.</p>
-                    <a href="https://merkezsosyal.apk.com" target="_blank" class="sosyal">Uygulamayı İndir</a>
+                    <p>Sade ve hızlı bir sosyal ağ deneyimi. Topluluğa katıl.</p>
+                    <a href="https://merkezsosyal.apk.com" target="_blank">Hemen İndir</a>
                 </div>
 
                 <div class="app-card">
                     <h3>Gezi Merkezi</h3>
-                    <p>Türkiye ve dünyadan keşif noktaları, en güzel gezi rotaları burada.</p>
-                    <a href="https://gezimerkezim.wordpress.com" target="_blank" class="gezi">Bloğu Oku</a>
+                    <p>Keşfedilmeyi bekleyen rotalar ve gezi rehberleri bloğu.</p>
+                    <a href="https://gezimerkezim.wordpress.com" target="_blank">Oku & Keşfet</a>
                 </div>
                 
-                </div>
+            </div>
         </section>
 
         <section id="iletisim">
-            <h2>📧 İletişim</h2>
-            <p>Bize ulaşmak ve iş birlikleri için e-posta adresimiz: merkeztr@yaani.com </p>
-            <p>Adresimiz: İzmir</p>
+            <h2>İLETİŞİM</h2>
+            <p style="text-align: center; font-size: 1.1em;">Yeni projeler, iş birlikleri ve önerileriniz için:</p>
+            <p style="text-align: center; font-weight: bold; font-size: 1.3em; margin-top: 5px;">merkeztr@yaani.com</p>
+            <p style="text-align: center; color: #777;">Adres: İzmir</p>
         </section>
 
     </div>
 
     <footer>
-        &copy; 2025 MERKEZ. Her Şeyin Merkezi.
+        &copy; 2025 MERKEZ | <a href="#hakkinda">Her Şeyin Merkezi Burası.</a>
     </footer>
 
 </body>
