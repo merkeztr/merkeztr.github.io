@@ -8,23 +8,20 @@
         /* Modern Renk Paleti ve Font Ayarları */
         :root {
             --primary-color: #ff6600; /* Turuncu */
-            --text-color: #333333; /* Koyu Gri (Siyah yerine) */
+            --text-color: #333333; /* Koyu Gri */
             --background-light: #ffffff;
             --background-grey: #f9f9f9;
-            --font-family: 'Poppins', sans-serif; /* Modern font denemesi */
+            --font-family: 'Arial', sans-serif; 
         }
-        
-        /* Poppins fontunu dahil etmek için normalde dışarıdan bir link kullanırdık,
-           ancak burada sadece CSS kullandığımız için sistem fontlarından en modern olanını koruyalım. */
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-family);
             margin: 0;
             padding: 0;
             background-color: var(--background-light);
             color: var(--text-color);
             line-height: 1.7;
-            text-rendering: optimizeLegibility; /* Daha iyi yazı görünümü */
+            text-rendering: optimizeLegibility;
         }
 
         /* Ana Bölüm Düzeni */
@@ -90,8 +87,42 @@
             margin: 60px 0 30px;
             font-weight: 700;
         }
+        
+        /* CTA Bölümü Stili */
+        #cta {
+            background-color: var(--primary-color);
+            color: var(--background-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 30px auto;
+        }
+        
+        #cta h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.8em;
+            font-weight: 800;
+        }
+        
+        #cta a {
+            display: inline-block;
+            background-color: var(--background-light);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        #cta a:hover {
+            background-color: #fff0e0;
+            transform: scale(1.05);
+        }
 
-        /* Uygulama Kartları - GRID ve Hover Etkisi */
+        /* Uygulama Kartları - Hover Etkisi Korundu */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -105,16 +136,14 @@
             border-radius: 10px;
             padding: 30px;
             text-align: center;
-            /* Hafif gölge ve geçiş efekti */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #eee;
         }
 
-        /* Kartın Havaya Kalkma Efekti! */
         .app-card:hover {
-            transform: translateY(-5px); /* Hafifçe yukarı kaydır */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Gölgeyi belirginleştir */
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
         }
 
         .app-card h3 {
@@ -134,14 +163,14 @@
             color: var(--background-light);
             padding: 12px 30px;
             text-decoration: none;
-            border-radius: 50px; /* Daha modern, yuvarlak buton */
+            border-radius: 50px;
             margin-top: 20px;
             font-weight: 600;
             transition: background-color 0.3s;
         }
 
         .app-card a:hover {
-            background-color: #e55a00; /* Turuncunun koyu tonu */
+            background-color: #e55a00;
         }
         
         /* Hakkımızda ve İletişim Bölümü */
@@ -159,8 +188,44 @@
             font-size: 1.05em;
         }
 
+        /* Yorumlar Bölümü Stili */
+        #yorumlar {
+            padding: 50px 0;
+        }
 
-        /* Footer - Temiz ve Altı Çizgisiz */
+        .testimonial-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--background-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color); /* Turuncu vurgu */
+            text-align: left;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card span {
+            display: block;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+        
+        /* Footer */
         footer {
             text-align: center;
             padding: 25px;
@@ -187,12 +252,19 @@
             <nav>
                 <a href="#hakkinda">Hakkımızda</a>
                 <a href="#uygulamalar">Projeler</a>
+                <a href="#yorumlar">Yorumlar</a>
                 <a href="#iletisim">İletişim</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
+        
+        <section id="cta">
+            <h3>Hayatınızı Kolaylaştıracak Uygulamalar Merkezde!</h3>
+            <p>Hemen keşfetmeye başla ve binlerce kullanıcımız arasına katıl.</p>
+            <a href="#uygulamalar">Tüm Projeleri Keşfet</a>
+        </section>
 
         <section id="hakkinda">
             <h2>MERKEZ HAKKINDA</h2>
@@ -224,6 +296,28 @@
                 
             </div>
         </section>
+        
+        <section id="yorumlar">
+            <h2>KULLANICILARIMIZ NE DİYOR?</h2>
+            <div class="testimonial-grid">
+                
+                <div class="testimonial-card">
+                    <p>"Nostalji Merkezi ile çocukluğuma geri döndüm. Gerçekten de her şeyin merkezi burasıymış!"</p>
+                    <span>Mert K. - İstanbul</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"MERKEZ SOSYAL'in sadeliği harika. Nothing Phone (1) gibi, gereksiz hiçbir şey yok. Çok beğendim."</p>
+                    <span>Ebru T. - İzmir</span>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"Gezi Merkezi bloğu sayesinde Kayışlar Köyü yakınlarında yeni bir rota keşfettik. Teşekkürler!"</p>
+                    <span>Ahmet B. - Manisa</span>
+                </div>
+
+            </div>
+        </section>
 
         <section id="iletisim">
             <h2>BİZE ULAŞIN</h2>
@@ -235,7 +329,7 @@
     </div>
 
     <footer>
-        &copy; 2025 MERKEZ | <a href="https://github.com" target="_blank">GitHub Pages'ta Barındırılıyor</a>
+        &copy; 2025 MERKEZ | <a href="https://github.com" target="_blank">Her Şeyin Merkezi Burası.</a>
     </footer>
 
 </body>
