@@ -68,13 +68,19 @@
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3.5em;
-            letter-spacing: -1px;
-            font-weight: 800;
-            color: var(--primary-color);
+        /* LOGO STİLİ - YENİ EKLEDİK */
+        #main-logo {
+            max-width: 180px; /* Logonun maksimum genişliği */
+            height: auto;
+            margin-bottom: 10px; /* Slogan kutusuyla arasına boşluk */
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.1)); /* Hafif gölge */
+            transition: filter 0.3s ease-in-out;
         }
+
+        body.dark-mode #main-logo {
+            filter: drop-shadow(0 0 8px rgba(255,102,0,0.4)); /* Karanlık modda turuncu gölge */
+        }
+
 
         .slogan-box {
             background-color: var(--background-grey);
@@ -236,7 +242,7 @@
             margin-top: 10px;
         }
         
-        /* SSS Bölümü Stili - YENİ CSS */
+        /* SSS Bölümü Stili */
         #sss {
             padding: 50px 0;
             background-color: var(--background-grey);
@@ -291,7 +297,7 @@
     <header>
         <button id="mode-toggle">Karanlık Modu Aç</button>
         <div class="container">
-            <h1>MERKEZ</h1>
+            <img id="main-logo" src="https://www.dropbox.com/scl/fi/6xjkubzl1jmk47k2my6fo/400_6911df0814204.png?rlkey=6fs4cyomgwuw7oai66gwsf7jf&st=1w5931ht&raw=1" alt="MERKEZ Logo">
             <div class="slogan-box">
                 Her Şeyin Merkezi Burası. Başlamak İçin Doğru Adrestesin!
             </div>
@@ -309,7 +315,7 @@
         <section id="hakkinda">
             <h2>MERKEZ HAKKINDA</h2>
             <p>MERKEZ, senin de çok sevdiğin gibi **teknoloji ve bilişime** odaklanmış bir şirkettir. Amacımız, en sade ve kullanıcı dostu uygulamaları ve eğlenceli oyunları tek bir çatı altında toplamaktır.</p>
-            <p>Geleceğin **bilgisayar mühendisi** olarak, burası senin hayallerini gerçekleştirmeye başlayacağın merkezdir.</p>
+            <p>İyi Günler!</p>
         </section>
 
         <section id="uygulamalar">
@@ -368,12 +374,12 @@
             
             <div class="sss-item">
                 <h4>Uygulamaları hangi platformlarda bulabilirim?</h4>
-                <p>MERKEZ SOSYAL'i direkt olarak .apk linki üzerinden indirebilirsiniz. Nostalji Merkezi ve Gezi Merkezi ise web tabanlı platformlardır.</p>
+                <p>MERKEZ SOSYAL'i direkt olarak .apk linki üzerinden indirebilirsiniz. Nostalji Merkezi ve Gezi Merkezi ise web tabanlı platformlardır ama Nostalji Merkezi'ni .apk olarak da indirebilirsiniz.</p>
             </div>
             
             <div class="sss-item">
                 <h4>Yeni proje veya işbirliği teklifleri için nasıl iletişime geçebilirim?</h4>
-                <p>İletişim bölümünde yer alan "info@merkez.com" e-posta adresi üzerinden bize ulaşabilirsiniz. En kısa sürede size dönüş yapılacaktır.</p>
+                <p>İletişim bölümünde yer alan "merkeztr@yaani.com" e-posta adresi üzerinden bize ulaşabilirsiniz. En kısa sürede size dönüş yapılacaktır.</p>
             </div>
             
             <div class="sss-item" style="border-bottom: none;">
@@ -386,8 +392,8 @@
         <section id="iletisim">
             <h2>BİZE ULAŞIN</h2>
             <p style="font-size: 1.1em;">Tüm soru, öneri ve iş birlikleriniz için:</p>
-            <p style="font-weight: bold; font-size: 1.4em; color: var(--primary-color); margin-top: 10px;">info@merkez.com</p>
-            <p style="color: var(--text-color); opacity: 0.7; margin-top: 20px;">Adres: Manisa / Akhisar</p>
+            <p style="font-weight: bold; font-size: 1.4em; color: var(--primary-color); margin-top: 10px;">merkeztr@yaani.com</p>
+            <p style="color: var(--text-color); opacity: 0.7; margin-top: 20px;">Adres: İzmir</p>
         </section>
 
     </div>
